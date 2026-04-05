@@ -210,10 +210,14 @@
     const gecontroleerd = new Array(vragen.length).fill(false);
 
     function startOpdracht() {
-      document.getElementById('scherm-intro').classList.remove('actief');
-      document.getElementById('scherm-vraag').classList.add('actief');
-      laadVraag(0);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      try {
+        document.getElementById('scherm-intro').classList.remove('actief');
+        document.getElementById('scherm-vraag').classList.add('actief');
+        laadVraag(0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch(e) {
+        console.error('startOpdracht fout:', e);
+      }
     }
 
     function laadVraag(i) {
